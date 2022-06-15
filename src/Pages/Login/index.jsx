@@ -1,14 +1,13 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Container, Content } from "./style";
 import { toast } from "react-toastify";
-import { useRef } from "react";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { PublicRoute } from "../../Services/Api";
 
 export const Login = ({ history }) => {
   const schema = yup.object().shape({
@@ -22,7 +21,22 @@ export const Login = ({ history }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const registerUser = (data) => console.log(data);
+  const registerUser = (data) => {
+    PublicRoute.post("/sessions", data)
+      .then((res) => {
+        toast.success("Login efetuado com sucesso");
+        localStorage.setItem(
+          "@KenzieHub:token",
+          JSON.stringify(res.data.token)
+        );
+        localStorage.setItem("@KenzieHub:user", JSON.stringify(res.data.user));
+
+        setTimeout(() => {
+          return history.push("/home");
+        }, 2000);
+      })
+      .catch((_) => toast.error("Email ou senha invalidos!"));
+  };
 
   return (
     <Container>
@@ -58,8 +72,8 @@ export const Login = ({ history }) => {
 
         <span>Ainda não possui uma conta?</span>
 
-        <Button type="submit" color="secundary">
-          Enviar
+        <Button onClick={() => history.push("/register")} color="secundary">
+          Cadastre-se
         </Button>
       </Content>
     </Container>

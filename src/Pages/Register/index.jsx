@@ -4,13 +4,19 @@ import { Input } from "../../components/Input";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Container, Content } from "./style";
 import { toast } from "react-toastify";
-import { useRef } from "react";
+
+import { PublicRoute } from "../../Services/Api";
+import { useState, useRef } from "react";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export const Register = ({ history }) => {
+  const [course, setCourse] = useState(
+    "Primeiro módulo (Introdução ao Frontend)"
+  );
+
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -27,7 +33,6 @@ export const Register = ({ history }) => {
       .required("Campo obrigatório!"),
     bio: yup.string().required("Campo obrigatório!"),
     contact: yup.string().required("Campo obrigatório!"),
-    course_module: yup.string().required("Campo obrigatório!"),
   });
 
   const options = useRef();
@@ -38,7 +43,23 @@ export const Register = ({ history }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const registerUser = (data) => console.log(data);
+  const registerUser = (data) => {
+    const { name, email, password, bio, contact, course_module } = {
+      ...data,
+      course_module: course,
+    };
+
+    const user = { name, email, password, bio, contact, course_module };
+
+    PublicRoute.post("/users", user)
+      .then((_) => {
+        toast.success("Conta criada com sucesso!");
+        setTimeout(() => {
+          return history.push("/");
+        }, 2000);
+      })
+      .catch((_) => toast.error("Ops! Algo deu errado"));
+  };
 
   return (
     <Container>
@@ -114,7 +135,8 @@ export const Register = ({ history }) => {
             register={register}
             error={errors.course_module?.message}
             options={options}
-            value="Primeiro módulo (Introdução ao Frontend)"
+            setCourse={setCourse}
+            value={course}
           >
             <ul ref={options} className="hidden">
               <li>Primeiro módulo (Introdução ao Frontend)</li>

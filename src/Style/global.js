@@ -32,6 +32,7 @@ export default createGlobalStyle`
     }
     button{
         cursor: pointer;
+        outline: none;
     }
     ul,ol,li {
         list-style: none;
