@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Container, InputContainer } from "./style";
 
 export const Input = ({
@@ -10,10 +9,9 @@ export const Input = ({
   error,
   children,
   options,
+  setCourse,
   ...rest
 }) => {
-  const [curse, setCurse] = useState("");
-
   const openOptions = () => {
     options.current.classList.toggle("hidden");
 
@@ -30,7 +28,7 @@ export const Input = ({
 
   const selectCurse = (e) => {
     options.current.classList.add("hidden");
-    setCurse(e.target.textContent);
+    setCourse(e.target.textContent);
   };
 
   return (
