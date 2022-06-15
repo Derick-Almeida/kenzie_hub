@@ -6,13 +6,14 @@ import { Container, Content } from "./style";
 import { toast } from "react-toastify";
 
 import { PublicRoute } from "../../Services/Api";
+import { Redirect } from "react-router-dom";
 import { useState, useRef } from "react";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export const Register = ({ history }) => {
+export const Register = ({ history, loged }) => {
   const [course, setCourse] = useState(
     "Primeiro módulo (Introdução ao Frontend)"
   );
@@ -60,6 +61,10 @@ export const Register = ({ history }) => {
       })
       .catch((_) => toast.error("Ops! Algo deu errado"));
   };
+
+  if (loged) {
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Container>

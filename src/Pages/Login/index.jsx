@@ -1,15 +1,16 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-
 import { Container, Content } from "./style";
+
+import { PublicRoute } from "../../Services/Api";
+import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { PublicRoute } from "../../Services/Api";
 
-export const Login = ({ history }) => {
+export const Login = ({ history, loged, setLoged }) => {
   const schema = yup.object().shape({
     email: yup.string().required("Campo obrigatório!").email("Email invalido!"),
     password: yup.string().required("Campo obrigatório!"),
@@ -30,13 +31,17 @@ export const Login = ({ history }) => {
           JSON.stringify(res.data.token)
         );
         localStorage.setItem("@KenzieHub:user", JSON.stringify(res.data.user));
-
+        setLoged(true);
         setTimeout(() => {
           return history.push("/home");
         }, 2000);
       })
       .catch((_) => toast.error("Email ou senha invalidos!"));
   };
+
+  if (loged) {
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Container>

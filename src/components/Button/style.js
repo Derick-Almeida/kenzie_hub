@@ -35,6 +35,10 @@ export const ButtonTheme = styled.button`
           background: var(--grey-3);
           color: var(--grey-0);
           font-size: 0.8rem;
+
+          &:hover {
+            background: var(--grey-2);
+          }
         `;
     }
   }}
