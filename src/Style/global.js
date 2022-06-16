@@ -47,4 +47,32 @@ export default createGlobalStyle`
         border-radius: 20px;
         background-color: var(--grey-2);
     }
+    @media (max-width: 425px) {
+        ::-webkit-scrollbar{
+            width: 1px;
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: transparent;
+        }
+    }
+    @media (min-width: 1600px){
+        .Toastify {
+            font-size: 2rem;
+        }
+        .Toastify__toast-icon{
+            width: 40px;
+        }
+        .Toastify__progress-bar{
+            height: 10px;
+        }
+        .Toastify__close-button > svg{
+            height: 32px;
+    width: 30px;
+        }
+        :root {
+            --toastify-toast-width: 500px;
+            --toastify-toast-min-height: 100px;
+            --toastify-toast-max-height: 1000px;
+        }
+    }
 `;

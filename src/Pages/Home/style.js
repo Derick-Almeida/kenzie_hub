@@ -23,17 +23,68 @@ export const Header = styled.div`
 
     h2 {
       text-transform: capitalize;
+      font-size: 1.5rem;
       color: var(--grey-0);
     }
 
     span {
       color: var(--grey-1);
+      font-size: 1.1rem;
     }
   }
 
   header {
     padding: 35px 20%;
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 750px) {
+    header,
+    nav {
+      padding: 20px;
+
+      h2 {
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+
+    header {
+      padding: 35px 20px;
+
+      span {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+  }
+
+  @media (min-width: 1600px) {
+    header,
+    nav {
+      padding: 20px 20%;
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      button {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      span {
+        font-size: 2rem;
+      }
+    }
+
+    header {
+      padding: 35px 20%;
+      margin-bottom: 20px;
+    }
   }
 `;
 
@@ -47,6 +98,7 @@ export const TechList = styled.div`
 
     p {
       color: var(--white);
+      font-size: 1rem;
     }
 
     svg {
@@ -104,6 +156,45 @@ export const TechList = styled.div`
       margin-top: 10px;
     }
   }
+
+  @media (max-width: 750px) {
+    padding: 20px;
+  }
+
+  @media (min-width: 1600px) {
+    > div {
+      p {
+        font-size: 2.5rem;
+      }
+      svg {
+        font-size: 2.5rem;
+
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    .tech__list {
+      padding: 40px;
+      height: 880px;
+      max-height: 880px;
+      overflow-y: auto;
+      border-radius: 15px;
+
+      li {
+        padding: 25px;
+        font-size: 2rem;
+
+        span {
+          font-size: 1.5rem;
+        }
+      }
+
+      li + li {
+        margin-top: 25px;
+      }
+    }
+  }
 `;
 
 const rotateIcon = keyframes`
@@ -143,5 +234,30 @@ export const Content = styled.div`
 
   p {
     font-size: 2rem;
+  }
+
+  @media (max-width: 425px) {
+    svg {
+      font-size: 3.5rem;
+    }
+    svg + svg {
+      margin-left: 20px;
+    }
+    p {
+      font-size: 1.7rem;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    margin: 180px auto;
+
+    svg {
+      font-size: 8rem;
+      margin-bottom: 50px;
+    }
+
+    p {
+      font-size: 4rem;
+    }
   }
 `;
