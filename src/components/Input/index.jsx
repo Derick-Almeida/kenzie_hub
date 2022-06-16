@@ -9,7 +9,7 @@ export const Input = ({
   error,
   children,
   options,
-  setCourse,
+  setState,
   ...rest
 }) => {
   const openOptions = () => {
@@ -17,18 +17,18 @@ export const Input = ({
 
     if (options.current.classList.value === "hidden") {
       [...options.current.children].map((li) => {
-        return li.removeEventListener("click", selectCurse);
+        return li.removeEventListener("click", select);
       });
     } else {
       [...options.current.children].map((li) => {
-        return li.addEventListener("click", selectCurse);
+        return li.addEventListener("click", select);
       });
     }
   };
 
-  const selectCurse = (e) => {
+  const select = (e) => {
     options.current.classList.add("hidden");
-    setCourse(e.target.textContent);
+    setState(e.target.textContent);
   };
 
   return (

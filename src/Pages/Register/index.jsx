@@ -140,7 +140,7 @@ export const Register = ({ history, loged }) => {
             register={register}
             error={errors.course_module?.message}
             options={options}
-            setCourse={setCourse}
+            setState={setCourse}
             value={course}
           >
             <ul ref={options} className="hidden">
