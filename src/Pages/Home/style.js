@@ -14,7 +14,7 @@ export const Header = styled.div`
 
     display: flex;
     justify-content: space-between;
-    padding: 20px 350px;
+    padding: 20px 20%;
 
     h1 {
       color: var(--color-primary);
@@ -32,13 +32,13 @@ export const Header = styled.div`
   }
 
   header {
-    padding: 35px 350px;
+    padding: 35px 20%;
     margin-bottom: 20px;
   }
 `;
 
 export const TechList = styled.div`
-  padding: 20px 350px;
+  padding: 20px 20%;
 
   > div {
     display: flex;
@@ -87,7 +87,7 @@ export const TechList = styled.div`
       background: var(--grey-4);
       color: var(--grey-0);
 
-      padding: 10px;
+      padding: 15px;
       font-size: 1rem;
 
       &:hover {
