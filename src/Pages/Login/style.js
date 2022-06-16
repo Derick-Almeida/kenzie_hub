@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const showForm = keyframes`
+from {
+  transform:  translateY(-50px);
+  opacity: 0;
+}
+to{
+  transform:  translateY(0px);
+  opacity:1;
+}
+`;
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -9,6 +20,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  animation: ${showForm} 0.6s linear;
+  transition: 0.3s;
 
   header {
     width: 100%;
@@ -22,6 +36,17 @@ export const Container = styled.div`
       font-size: 1.8rem;
     }
   }
+
+  @media (min-width: 1600px) {
+    max-width: 800px;
+    padding: 60px 0;
+
+    header {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -33,13 +58,13 @@ export const Content = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
 
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
 
     h2 {
       color: var(--grey-0);
@@ -62,5 +87,37 @@ export const Content = styled.div`
   button {
     width: 100%;
     height: 60px;
+  }
+
+  @media (min-width: 1600px) {
+    padding: 80px 40px 60px 40px;
+    border-radius: 15px;
+
+    form {
+      gap: 50px;
+
+      h2 {
+        font-size: 2.6rem;
+      }
+
+      input {
+        height: 100px;
+      }
+
+      button {
+        height: 100px;
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+    }
+
+    span {
+      font-size: 2rem;
+    }
+
+    button {
+      height: 100px;
+      font-size: 2rem;
+    }
   }
 `;

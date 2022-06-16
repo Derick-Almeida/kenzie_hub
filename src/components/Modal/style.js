@@ -79,4 +79,37 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (min-width: 1600px) {
+    .box {
+      min-width: 30%;
+
+      .header {
+        padding: 25px;
+
+        h2 {
+          font-size: 2rem;
+        }
+        svg {
+          font-size: 2.5rem;
+        }
+      }
+
+      form {
+        padding: 40px;
+        gap: 40px;
+
+        .buttons {
+          button + button {
+            margin-left: 10px;
+          }
+        }
+        button {
+          margin-bottom: 25px;
+          height: 80px;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
 `;
